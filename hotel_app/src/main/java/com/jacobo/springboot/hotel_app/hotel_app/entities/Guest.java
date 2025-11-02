@@ -1,5 +1,7 @@
 package com.jacobo.springboot.hotel_app.hotel_app.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -10,7 +12,7 @@ public class Guest {
 
     private String fullName;
 
-    private Booking booking;
+    private List<Booking> bookings;
 
     public Long getId() {
         return id;
@@ -28,12 +30,12 @@ public class Guest {
         this.fullName = fullName;
     }
 
-    public Booking getBooking() {
-        return booking;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     @Override
@@ -42,7 +44,7 @@ public class Guest {
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
-        result = prime * result + ((booking == null) ? 0 : booking.hashCode());
+        result = prime * result + ((bookings == null) ? 0 : bookings.hashCode());
         return result;
     }
 
@@ -65,10 +67,10 @@ public class Guest {
                 return false;
         } else if (!fullName.equals(other.fullName))
             return false;
-        if (booking == null) {
-            if (other.booking != null)
+        if (bookings == null) {
+            if (other.bookings != null)
                 return false;
-        } else if (!booking.equals(other.booking))
+        } else if (!bookings.equals(other.bookings))
             return false;
         return true;
     }

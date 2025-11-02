@@ -1,6 +1,7 @@
 package com.jacobo.springboot.hotel_app.hotel_app.entities;
 
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -10,9 +11,11 @@ import jakarta.persistence.Table;
 public class Booking {
     private Long id;
 
-    private Date bookingDate;
+    private Date checkInDate;
 
-    private Room room;
+    private Date checkOutDate;
+
+    private List<Room> rooms;
 
     public Long getId() {
         return id;
@@ -22,20 +25,28 @@ public class Booking {
         this.id = id;
     }
 
-    public Date getBookingDate() {
-        return bookingDate;
+    public Date getCheckInDate() {
+        return checkInDate;
     }
 
-    public void setBookingDate(Date bookingDate) {
-        this.bookingDate = bookingDate;
+    public void setCheckInDate(Date checkInDate) {
+        this.checkInDate = checkInDate;
     }
 
-    public Room getRoom() {
-        return room;
+    public Date getCheckOutDate() {
+        return checkOutDate;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setCheckOutDate(Date checkOutDate) {
+        this.checkOutDate = checkOutDate;
+    }
+
+    public List<Room> getRoom() {
+        return rooms;
+    }
+
+    public void setRoom(List<Room> room) {
+        this.rooms = room;
     }
 
     @Override
@@ -43,8 +54,9 @@ public class Booking {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((bookingDate == null) ? 0 : bookingDate.hashCode());
-        result = prime * result + ((room == null) ? 0 : room.hashCode());
+        result = prime * result + ((checkInDate == null) ? 0 : checkInDate.hashCode());
+        result = prime * result + ((checkOutDate == null) ? 0 : checkOutDate.hashCode());
+        result = prime * result + ((rooms == null) ? 0 : rooms.hashCode());
         return result;
     }
 
@@ -62,15 +74,20 @@ public class Booking {
                 return false;
         } else if (!id.equals(other.id))
             return false;
-        if (bookingDate == null) {
-            if (other.bookingDate != null)
+        if (checkInDate == null) {
+            if (other.checkInDate != null)
                 return false;
-        } else if (!bookingDate.equals(other.bookingDate))
+        } else if (!checkInDate.equals(other.checkInDate))
             return false;
-        if (room == null) {
-            if (other.room != null)
+        if (checkOutDate == null) {
+            if (other.checkOutDate != null)
                 return false;
-        } else if (!room.equals(other.room))
+        } else if (!checkOutDate.equals(other.checkOutDate))
+            return false;
+        if (rooms == null) {
+            if (other.rooms != null)
+                return false;
+        } else if (!rooms.equals(other.rooms))
             return false;
         return true;
     }

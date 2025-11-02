@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-HotelAppApplication<hotel_app>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.jacobo.springboot.hotel_app.hotel_app.HotelAppApplication",
+            "projectName": "hotel_app",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
