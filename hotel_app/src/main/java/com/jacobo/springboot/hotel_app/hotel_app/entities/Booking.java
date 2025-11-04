@@ -1,6 +1,7 @@
 package com.jacobo.springboot.hotel_app.hotel_app.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -32,6 +33,17 @@ public class Booking {
     @JoinColumn(name = "bookings")
     private Guest guest;
 
+    public Booking() {
+        this.rooms = new ArrayList<>();
+    }
+
+    public Booking(Date checkInDate, Date checkOutDate, Guest guest) {
+        this();
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.guest = guest;
+    }
+
     public Long getId() {
         return id;
     }
@@ -55,13 +67,13 @@ public class Booking {
     public void setCheckOutDate(Date checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
-
-    public List<Room> getRoom() {
+    
+    public List<Room> getRooms() {
         return rooms;
     }
 
-    public void setRoom(List<Room> room) {
-        this.rooms = room;
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
     }
 
     public Guest getGuest() {
@@ -120,4 +132,5 @@ public class Booking {
             return false;
         return true;
     }
+
 }

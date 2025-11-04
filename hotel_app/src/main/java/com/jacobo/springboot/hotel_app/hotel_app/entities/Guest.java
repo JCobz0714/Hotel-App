@@ -1,5 +1,6 @@
 package com.jacobo.springboot.hotel_app.hotel_app.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -22,6 +23,15 @@ public class Guest {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "guest")
     private List<Booking> bookings;
+
+    public Guest() {
+        this.bookings = new ArrayList<>();
+    }
+
+    public Guest(String fullName) {
+        this();
+        this.fullName = fullName;
+    }
 
     public Long getId() {
         return id;

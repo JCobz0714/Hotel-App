@@ -1,5 +1,6 @@
 package com.jacobo.springboot.hotel_app.hotel_app.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -27,6 +28,16 @@ public class Room {
     @ManyToOne
     @JoinColumn(name = "rooms")
     private List<Booking> bookings;
+
+    public Room() {
+        this.bookings = new ArrayList<>();
+    }
+
+    public Room(Long roomNumber, Hotel hotel) {
+        this();
+        this.roomNumber = roomNumber;
+        this.hotel = hotel;
+    }
 
     public Long getId() {
         return id;
