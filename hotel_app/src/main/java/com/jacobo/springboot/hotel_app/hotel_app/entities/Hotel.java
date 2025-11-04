@@ -2,16 +2,25 @@ package com.jacobo.springboot.hotel_app.hotel_app.entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "hotels")
 public class Hotel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String hotelName;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "hotel")
     private List<Room> rooms;
 
     public Long getId() {
