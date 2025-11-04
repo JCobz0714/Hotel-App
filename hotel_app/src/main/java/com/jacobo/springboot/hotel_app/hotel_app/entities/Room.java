@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "rooms")
@@ -19,6 +20,7 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private Long roomNumber;
 
     @ManyToOne
@@ -26,18 +28,8 @@ public class Room {
     private Hotel hotel;
 
     @ManyToOne
-    @JoinColumn(name = "rooms")
-    private List<Booking> bookings;
-
-    public Room() {
-        this.bookings = new ArrayList<>();
-    }
-
-    public Room(Long roomNumber, Hotel hotel) {
-        this();
-        this.roomNumber = roomNumber;
-        this.hotel = hotel;
-    }
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
 
     public Long getId() {
         return id;
@@ -63,12 +55,12 @@ public class Room {
         this.hotel = hotel;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     @Override
@@ -78,7 +70,7 @@ public class Room {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((roomNumber == null) ? 0 : roomNumber.hashCode());
         result = prime * result + ((hotel == null) ? 0 : hotel.hashCode());
-        result = prime * result + ((bookings == null) ? 0 : bookings.hashCode());
+        result = prime * result + ((booking == null) ? 0 : booking.hashCode());
         return result;
     }
 
@@ -106,10 +98,10 @@ public class Room {
                 return false;
         } else if (!hotel.equals(other.hotel))
             return false;
-        if (bookings == null) {
-            if (other.bookings != null)
+        if (booking == null) {
+            if (other.booking != null)
                 return false;
-        } else if (!bookings.equals(other.bookings))
+        } else if (!booking.equals(other.booking))
             return false;
         return true;
     }

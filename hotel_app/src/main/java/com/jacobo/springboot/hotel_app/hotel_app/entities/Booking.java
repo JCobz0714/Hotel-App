@@ -13,6 +13,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "bookings")
@@ -22,15 +25,19 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @FutureOrPresent
     private Date checkInDate;
 
+    @NotNull
+    @Future
     private Date checkOutDate;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bookings")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "booking")
     private List<Room> rooms;
 
     @ManyToOne
-    @JoinColumn(name = "bookings")
+    @JoinColumn(name = "booking")
     private Guest guest;
 
     public Booking() {
