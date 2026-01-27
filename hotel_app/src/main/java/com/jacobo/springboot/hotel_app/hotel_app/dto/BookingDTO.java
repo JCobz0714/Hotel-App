@@ -49,6 +49,4 @@ public class BookingDTO {
     public void setGuestName(String guestName) {
         this.guestName = guestName;
     }
-
-    
 }
