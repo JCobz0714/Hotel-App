@@ -33,11 +33,11 @@ public class Booking {
     @Future
     private Date checkOutDate;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "booking")
+    @OneToMany(mappedBy = "booking")
     private List<Room> rooms;
 
     @ManyToOne
-    @JoinColumn(name = "booking")
+    @JoinColumn(name = "guest_id")
     private Guest guest;
 
     public Booking() {
