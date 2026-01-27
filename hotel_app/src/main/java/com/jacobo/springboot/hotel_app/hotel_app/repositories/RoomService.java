@@ -1,0 +1,9 @@
+package com.jacobo.springboot.hotel_app.hotel_app.repositories;
+
+import java.util.List;
+
+import com.jacobo.springboot.hotel_app.hotel_app.entities.Room;
+
+public interface RoomService {
+    List<Room> findAll();
+}
