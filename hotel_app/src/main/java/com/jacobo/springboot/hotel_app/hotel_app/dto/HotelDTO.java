@@ -1,5 +1,7 @@
 package com.jacobo.springboot.hotel_app.hotel_app.dto;
 
+import java.util.List;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -8,7 +10,7 @@ public class HotelDTO {
     private String hotelName;
 
     @NotNull
-    private Long roomNumber;
+    private List<Long> roomNumbers;
 
     public String getHotelName() {
         return hotelName;
@@ -18,11 +20,11 @@ public class HotelDTO {
         this.hotelName = hotelName;
     }
 
-    public Long getRoomNumber() {
-        return roomNumber;
+    public List<Long> getRoomNumbers() {
+        return roomNumbers;
     }
 
-    public void setRoomNumber(Long roomNumber) {
-        this.roomNumber = roomNumber;
+    public void setRoomNumbers(List<Long> roomNumbers) {
+        this.roomNumbers = roomNumbers;
     }
 }
