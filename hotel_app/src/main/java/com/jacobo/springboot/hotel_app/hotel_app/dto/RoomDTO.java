@@ -10,7 +10,6 @@ public class RoomDTO {
     @NotBlank
     private String hotelName;
 
-    @NotNull
     private Long bookingId;
 
     public Long getRoomNumber() {
