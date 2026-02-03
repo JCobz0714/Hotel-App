@@ -9,4 +9,6 @@ public interface GuestService {
     List<Guest> findAll();
 
     Guest save(GuestDTO guestDTO);
+
+    boolean existsById(Long id);
 }

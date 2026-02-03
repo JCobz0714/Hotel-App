@@ -10,4 +10,6 @@ import java.sql.Date;
 
 public interface BookingRepository extends CrudRepository<Booking, Long> {
     List<Booking> findByCheckInDate(Date checkInDate);
+
+    List<Booking> findByGuestId(Long guestId);
 }

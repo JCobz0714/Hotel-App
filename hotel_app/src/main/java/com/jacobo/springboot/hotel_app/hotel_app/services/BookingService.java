@@ -9,4 +9,6 @@ public interface BookingService {
     List<Booking> findAll();
 
     Booking save(BookingDTO bookingDTO);
+
+    List<Booking> findByGuestId(Long guestId);
 }

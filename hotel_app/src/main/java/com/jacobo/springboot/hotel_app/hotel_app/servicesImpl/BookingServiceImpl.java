@@ -30,6 +30,11 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public List<Booking> findByGuestId(Long guestId) {
+        return repository.findByGuestId(guestId);
+    }
+
+    @Override
     public Booking save(BookingDTO bookingDTO) {
         Room room = roomRepository.findByRoomNumber(bookingDTO.getRoomNumber()).orElseThrow(() -> new RuntimeException("Room not found"));
 
@@ -48,4 +53,5 @@ public class BookingServiceImpl implements BookingService {
 
         return repository.save(booking);
     }
+
 }
