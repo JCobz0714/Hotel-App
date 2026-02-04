@@ -27,4 +27,11 @@ public class GuestServiceImpl implements GuestService {
         return repository.save(guest);
     }
 
+    @Override
+    public boolean existsById(Long id) {
+        boolean guestExists = repository.findById(id) != null ? true : false;
+
+        return guestExists;
+    }
+
 }
