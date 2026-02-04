@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jacobo.springboot.hotel_app.hotel_app.dto.BookingDTO;
 import com.jacobo.springboot.hotel_app.hotel_app.entities.Booking;
@@ -14,6 +15,7 @@ import com.jacobo.springboot.hotel_app.hotel_app.repositories.GuestRepository;
 import com.jacobo.springboot.hotel_app.hotel_app.repositories.RoomRepository;
 import com.jacobo.springboot.hotel_app.hotel_app.services.BookingService;
 
+@Service
 public class BookingServiceImpl implements BookingService {
     @Autowired
     private BookingRepository repository;

@@ -31,7 +31,7 @@ public class BookingController {
     }
     
 
-    @GetMapping("/{guest_id}")
+    @GetMapping("/{guestId}")
     public List<Booking> guestBookings(@PathVariable Long guestId) {
         boolean guest = guestService.existsById(guestId);
 
@@ -40,7 +40,7 @@ public class BookingController {
         return service.findByGuestId(guestId);
     }
     
-    @GetMapping("/{guest_id/{booking_id}")
+    @GetMapping("/{guestId}/{bookingId}")
     public String getBooking() {
         return new String();
     }

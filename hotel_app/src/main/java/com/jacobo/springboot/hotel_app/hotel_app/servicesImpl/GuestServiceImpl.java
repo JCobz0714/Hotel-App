@@ -3,12 +3,14 @@ package com.jacobo.springboot.hotel_app.hotel_app.servicesImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jacobo.springboot.hotel_app.hotel_app.dto.GuestDTO;
 import com.jacobo.springboot.hotel_app.hotel_app.entities.Guest;
 import com.jacobo.springboot.hotel_app.hotel_app.repositories.GuestRepository;
 import com.jacobo.springboot.hotel_app.hotel_app.services.GuestService;
 
+@Service
 public class GuestServiceImpl implements GuestService {
     @Autowired
     private GuestRepository repository;
@@ -29,9 +31,7 @@ public class GuestServiceImpl implements GuestService {
 
     @Override
     public boolean existsById(Long id) {
-        boolean guestExists = repository.findById(id) != null ? true : false;
-
-        return guestExists;
+        return repository.existsById(id);
     }
 
 }

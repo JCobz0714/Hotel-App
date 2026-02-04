@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jacobo.springboot.hotel_app.hotel_app.dto.HotelDTO;
 import com.jacobo.springboot.hotel_app.hotel_app.entities.Hotel;
@@ -12,6 +13,7 @@ import com.jacobo.springboot.hotel_app.hotel_app.repositories.HotelRepository;
 import com.jacobo.springboot.hotel_app.hotel_app.repositories.RoomRepository;
 import com.jacobo.springboot.hotel_app.hotel_app.services.HotelService;
 
+@Service
 public class HotelServiceImpl implements HotelService {
     @Autowired
     private HotelRepository repository;
@@ -27,7 +29,6 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public Hotel save(HotelDTO hotelDTO) {
         Hotel hotel = new Hotel();
-        Room room = new Room();
         List<Room> rooms = new ArrayList<>();
 
         hotel.setHotelName(hotelDTO.getHotelName());
@@ -35,6 +36,8 @@ public class HotelServiceImpl implements HotelService {
         Hotel savedHotel = repository.save(hotel);
 
         for(Long roomNumber : hotelDTO.getRoomNumbers()){
+            Room room = new Room();
+            
             room.setRoomNumber(roomNumber);
             room.setHotel(savedHotel);
 
